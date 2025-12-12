@@ -19,13 +19,15 @@
         width: 50%;
         height: 100%;
         float: left;
+        display: flex;
+        align-items: center;
         
     }
     .record-bg{
-        width: 500px;
-        height: 500px;
+        width: 450px;
+        height: 450px;
         background-color: black;
-        border-radius: 500px;
+        border-radius: 450px;
         display: flex;
         justify-content: center;
         align-items: center;
