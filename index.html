@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐播放器</title>
+    <link rel="stylesheet" href="./CSS/sy2.css">
+    
+</head>
+<body background="./img/record3.jpg">
+    <div class="upper-container">
+        <div class="record-container">
+            <div class="record-bg">
+                <div class="record-img rotate-play"></div>
+            </div>
+        </div>
+        <div class="introduction-container">
+        <div class="music-title">音乐名称</div>
+        <div class="author-container">
+            作者：
+            <span class="author-name">梁乔风25216950112</span>
+        </div>
+        </div>
+    </div>
+    <div class="bottom-container">
+        <audio id="audioTag"></audio>
+        <div class="progress">
+            <div class="progress-played">
+
+            </div>
+        </div>
+        <div class="controls">
+            <div class="time-container">
+                <span class="played-time">00:00</span>
+                &nbsp;/&nbsp;
+                <span class="audio-time">00:00</span>
+            </div>
+            <div class="center-button">
+                <div class="playMode center-icon"></div>
+                <div class="beforeMusic center-icon"></div>
+                <div class="playPause center-icon icon-play"></div>
+                <div class="nextMusic center-icon"></div>
+                <div class="volumn center-icon"></div>
+                <input type="range" value="70" min="0" max="100" step="1" id="volumn-togger"/> 
+            </div>
+            <div class="right-button">
+                <!-- MV按钮保留在原位，但功能关闭 -->
+                <div class="MV right-icon disabled" title="MV功能已关闭"></div>
+                <div class="speed">1.0X</div>
+                <div class="list right-icon"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="close-list"></div>
+    <div class="musicList-container">    
+        <div class="music-list-title">播放列表</div>
+    <hr/>
+    <div class="musics-list">
+        
+    </div></div>
+
+    <script src="./JS/shiyan2.js"></script>
+    <script>
+        // 防止MV按钮有任何点击功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const mvButton = document.querySelector('.MV');
+            if (mvButton) {
+                // 移除所有现有的事件监听器
+                const newMV = mvButton.cloneNode(true);
+                mvButton.parentNode.replaceChild(newMV, mvButton);
+                
+                // 添加禁用样式和阻止点击
+                newMV.classList.add('disabled');
+                newMV.style.cursor = 'default';
+                newMV.style.opacity = '0.5';
+                
+                // 阻止任何点击事件
+                newMV.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('MV功能已关闭');
+                    return false;
+                }, true);
+            }
+        });
+    </script>
+</body>
+</html>
